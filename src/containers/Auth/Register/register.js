@@ -6,6 +6,11 @@ import withAuth from '../../../hoc/WithGaurd';
 import RegisterBox from '../../../components/Auth/Register/registerBox';
 
 class Register extends Component {
+    componentWillUnmount(){
+        if(this.props.registerResponse !== null){
+            this.props.registerUnLoad();
+        }
+    }
 
     render() {
         return (
@@ -34,7 +39,8 @@ const mapStateToProps = state => {
   };
 const mapDispatchToProps = dispatch => {
     return {
-        register: data => dispatch(actions.register(data))
+        register: data => dispatch(actions.register(data)),
+        registerUnLoad: () => dispatch(actions.registerUnLoad())
     };
 };
 

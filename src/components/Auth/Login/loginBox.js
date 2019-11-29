@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './Form';
-import { Spinner, Alert } from 'react-bootstrap'
+import { Spinner, Alert } from 'react-bootstrap';
 
 const LoginBox = props => (
    <>

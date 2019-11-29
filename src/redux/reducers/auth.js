@@ -52,6 +52,16 @@ const loginFail = (state, action) => {
     return { ...state, ...updateObject };
 };
 
+const loginUnLoad = (state, action) => {
+    const updateObject = {
+        login: {
+            loginResponse: null,
+            loading: false,
+        },
+    }
+    return { ...state, ...updateObject };
+};
+
 const registerStart = (state, action) => {
     const updateObject = {
         authStatus: false,
@@ -85,6 +95,16 @@ const registerFail = (state, action) => {
     return { ...state, ...updateObject };
 };
 
+const registerUnLoad = (state, action) => {
+    const updateObject = {
+        register: {
+            registerResponse: null,
+            loading: false,
+        }
+    }
+    return { ...state, ...updateObject };
+};
+
 const logout = (state, action) => {
     const updateObject = initialState;
     return { ...state, ...updateObject };
@@ -96,9 +116,11 @@ const reducer = (state = initialState, action) => {
         case actionTypes.LOGIN_USER: return loginStart(state, action);
         case actionTypes.LOGIN_SUCCESS: return loginSuccess(state, action);
         case actionTypes.LOGIN_FAIL: return loginFail(state, action);
+        case actionTypes.LOGIN_PAGE_UNLOADED: return loginUnLoad(state, action);
         case actionTypes.REGISTER_USER: return registerStart(state, action);
         case actionTypes.REGISTER_SUCCESS: return registerSuccess(state, action);
         case actionTypes.REGISTER_FAIL: return registerFail(state, action);
+        case actionTypes.REGISTER_PAGE_UNLOADED: return registerUnLoad(state, action);
         case actionTypes.LOGOUT_USER: return logout(state, action);
         default:
             return state;

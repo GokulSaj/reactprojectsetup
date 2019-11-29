@@ -13,6 +13,15 @@ export const userLogined = () => {
 };
 
 // Login
+
+export const login = (data) => {
+  return {
+    type: actionTypes.LOGIN_USER,
+    email: data.email,
+    password: data.password
+  };
+};
+
 export const loginSuccess = (response) => {
   return {
     type: actionTypes.LOGIN_SUCCESS,
@@ -27,11 +36,9 @@ export const loginFail = error => {
   };
 };
 
-export const login = (data) => {
+export const loginUnLoad = () => {
   return {
-    type: actionTypes.LOGIN_USER,
-    email: data.email,
-    password: data.password
+    type: actionTypes.LOGIN_PAGE_UNLOADED,
   };
 };
 
@@ -55,6 +62,12 @@ export const register = (data) => {
     type: actionTypes.REGISTER_USER,
     email: data.email,
     password: data.password
+  };
+};
+
+export const registerUnLoad = () => {
+  return {
+    type: actionTypes.REGISTER_PAGE_UNLOADED,
   };
 };
 

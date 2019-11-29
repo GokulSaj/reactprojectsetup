@@ -6,6 +6,11 @@ import withAuth from '../../../hoc/WithGaurd';
 import LoginBox from '../../../components/Auth/Login/loginBox';
 
 class Login extends Component {
+    componentWillUnmount() {
+        if(this.props.loginResponse !== null){
+            this.props.loginUnLoad();
+        }
+    }
 
     render() {
         return (
@@ -32,10 +37,11 @@ const mapStateToProps = state => {
         loginResponse: state.auth.login.loginResponse,
         loading: state.auth.login.loading,
     };
-  };
+};
 const mapDispatchToProps = dispatch => {
     return {
-        login: data => dispatch(actions.login(data))
+        login: data => dispatch(actions.login(data)),
+        loginUnLoad: () => dispatch(actions.loginUnLoad())
     };
 };
 
